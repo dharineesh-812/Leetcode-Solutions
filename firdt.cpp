@@ -1,0 +1,29 @@
+class Solution {
+public:
+    void find(int index , set<vector<int>> &ans,vector<int> &st ,vector<int>& nums){
+        if(index == nums.size()){
+            ans.insert(st);
+            return ;
+        }
+        st.push_back(nums[index]);
+        find(index+1 , ans ,st ,nums);
+        st.pop_back();
+        find(index+1,ans,st,nums);
+    }
+    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+        set<vector<int>> ans;
+        vector<int>st;
+        sort(nums.begin(),nums.end());
+        find(0,ans,st,nums);
+        vector<vector<int>>arr(ans.begin(),ans.end());
+        return arr;
+    }
+};
+
+
+Mistake :
+
+ We should sort to avoid duplicates 
+ set<vector<int>> ans;
+ vector doesn't detect duplicates
+		
