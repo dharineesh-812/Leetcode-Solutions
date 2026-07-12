@@ -1,0 +1,17 @@
+class Solution {
+  public:
+    int dp[50];
+    int rec(int n){
+        if(n == 1)
+            return 1;
+        if(n == 2)
+            return 2;
+        if(dp[n] != -1)
+            return dp[n];
+        return dp[n] = rec(n-1) + rec(n-2);
+    }
+    int numberOfWays(int n) {
+        memset(dp,-1,sizeof(dp));
+        return rec(n);
+    }
+};
