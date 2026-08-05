@@ -21,23 +21,12 @@ public:
     Node* connect(Node* root) {
         if(root == NULL)
             return NULL;
-        queue<Node*>q;
-        q.push(root);
-        while(!q.empty()){
-            int n = q.size();
-            for(int i = 0; i < n;i++){
-                Node* cur = q.front();
-                q.pop();
-                if(i != n - 1)
-                    cur -> next = q.front();
-                else
-                    cur -> next =NULL;
-                if(cur -> left)
-                    q.push(cur -> left);
-                if(cur -> right)
-                    q.push(cur -> right);
-            }
-        }
+        if(root -> left)
+            root -> left -> next = root -> right;
+        if(root -> right && root -> next != NULL)
+            root -> right -> next = root -> next -> left;
+        connect(root -> left);
+        connect(root -> right);
         return root;
     }
 };
