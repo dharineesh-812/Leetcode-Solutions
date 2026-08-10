@@ -13,7 +13,7 @@ using ll = long long;
 class Solution {
 public:
     long long kthLargestLevelSum(TreeNode* root, int k) {
-        multiset<ll>st;
+        priority_queue<ll,vector<ll> , greater<ll>>pq;
         queue<TreeNode*>q;
         q.push(root);
         while(!q.empty()){
@@ -28,14 +28,14 @@ public:
                 if(cur -> right)
                     q.push(cur -> right);
             }
-            st.insert(sum);
-            if(st.size() > k)
-                st.erase(st.begin());
+            pq.push(sum);
+            if(pq.size() > k)
+                pq.pop();
         }
-        if(st.size() < k)
+        if(pq.size() < k)
             return -1;
         // for(int i = 0;i < k - 1;i++)
         //     st.erase(--st.end());
-        return *st.begin();
+        return pq.top();
     }
 };
