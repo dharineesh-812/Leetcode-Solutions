@@ -29,11 +29,13 @@ public:
                     q.push(cur -> right);
             }
             st.insert(sum);
+            if(st.size() > k)
+                st.erase(st.begin());
         }
         if(st.size() < k)
             return -1;
-        for(int i = 0;i < k - 1;i++)
-            st.erase(--st.end());
-        return *st.rbegin();
+        // for(int i = 0;i < k - 1;i++)
+        //     st.erase(--st.end());
+        return *st.begin();
     }
 };
