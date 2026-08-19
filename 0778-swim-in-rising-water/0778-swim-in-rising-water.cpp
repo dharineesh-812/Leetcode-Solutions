@@ -13,7 +13,7 @@ public:
         vvi dist(n , vi(n , 1e9));
 
         using state = pair<int,pi>;
-        multiset<state> st;
+        set<state> st;
 
         dist[0][0] = grid[0][0];
         st.insert(mp(grid[0][0] , mp(0,0)));
