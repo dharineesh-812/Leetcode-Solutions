@@ -21,9 +21,16 @@ public:
 
         long long sum = 0 , ans = 0;
 
-        while(sum + d <= n){
-            ans++;
-            sum += d;
+        while(n >= d){
+            long long val = d;
+            long long mul = 1;
+
+            while((val << 1) <= n){
+                val <<= 1;
+                mul <<= 1;
+            }
+            n -= val;
+            ans += mul;
         }
         if(sign == -1)
             return 0 - ans;
