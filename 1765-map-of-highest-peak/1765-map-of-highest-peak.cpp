@@ -4,9 +4,11 @@
 #define mp make_pair
 #define F first
 #define S second
+#define fast ios::sync_with_stdio(false); cin.tie(nullptr);
 class Solution {
 public:
     vector<vector<int>> highestPeak(vector<vector<int>>& isWater) {
+        fast
         int dx[4] = {-1 , 0 , 1 , 0};
         int dy[4] = {0 , 1 , 0 , -1};
         int m = isWater.size() , n = isWater[0].size();
