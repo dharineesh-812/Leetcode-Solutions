@@ -12,7 +12,7 @@ public:
                 len = max(len , i + 1);
             else if(mp.count(sum))
                 len = max(len , i - mp[sum]);
-            else if(mp.find(mp[sum]) == mp.end())
+            else if(mp.find(sum) == mp.end())
                 mp[sum] = i;
         }
         return len;
