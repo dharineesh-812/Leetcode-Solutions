@@ -6,7 +6,7 @@ public:
     
     int rec(int i , int cur , vi &stones){
         if(i >= stones.size())
-            return dp[i][cur] = cur;
+            return  cur;
         if(dp[i][cur] != -1)
             return dp[i][cur];
         
