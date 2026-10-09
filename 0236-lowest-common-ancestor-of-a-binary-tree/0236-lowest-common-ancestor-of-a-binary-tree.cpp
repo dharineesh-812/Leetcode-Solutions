@@ -9,16 +9,20 @@
  */
 class Solution {
 public:
-    TreeNode* check(TreeNode* root , TreeNode* p , TreeNode* q){
-        if(root == nullptr || root == p || root == q)
+    TreeNode* rec(TreeNode* root, TreeNode* p, TreeNode* q){
+        if(root == NULL || root == p || root == q)
             return root;
-        TreeNode* left = check(root -> left , p , q);
-        TreeNode* right = check(root -> right , p , q);
-        if(!left) return right;
-        else if(!right)  return left;
-        return root;        
+        
+        TreeNode* left = rec(root -> left , p , q);
+        TreeNode* right = rec(root -> right , p , q);
+
+        if(left && right)
+            return root;
+        if(left)
+            return left;
+        return right;
     }
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-        return check(root , p , q);
+        return rec(root , p , q);
     }
 };
